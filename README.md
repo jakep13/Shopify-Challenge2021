@@ -23,3 +23,19 @@ Also, I would recommend testing using Postman.
 I am currently writing tests which can be run using 'npm run-script test', this will be pushed in the upcoming commit
 
 
+
+This project is a work in progress:
+
+## Features
+
+- Users can upload one photo at a time
+- Users can Login/Register
+- Users can delete photos *coming soon*
+
+Please view the schema specified in the models folder for more information about how users and images are stored
+
+## Testing
+
+I will be using Mocha as a testing framework
+
+## Potential Improvements
