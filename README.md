@@ -12,6 +12,7 @@ npm init
 npm install
 
 and then to start the server locally you must do:
+
 node server
 
 then copy the host address into a browser
