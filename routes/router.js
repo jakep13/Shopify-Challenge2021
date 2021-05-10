@@ -6,22 +6,14 @@ const mongoose = require('mongoose');
 const url = require('../config');
 const upload = require('../middleware/upload');
 const Image = require('../models/image');
-const User = require("../models/User");
+const {User} = require("../models/User");
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
 const dotenv = require('dotenv');
 
 module.exports = () => {
-    let gfs;
-    const connect = mongoose.createConnection(url, { useNewUrlParser: true, useUnifiedTopology: true });
-
-    connect.once('open', () => {
-        // initialize stream
-        gfs = new mongoose.mongo.GridFSBucket(connect.db, {
-            bucketName: "uploads"
-        });
-    });
+ 
     
 
     router.route('/upload')
@@ -30,7 +22,7 @@ module.exports = () => {
             let newImage = new Image({
                 filename:req.file.originalname,
             });
-            console.log("HERE WE ARE MY GOOD FRIEND LOL 112341231342");
+
             newImage.save()
                 // .then((image) => {
                 //     res.status(200).json({
@@ -40,7 +32,7 @@ module.exports = () => {
                 //     console.log("HERE WE ARE MY GOOD FRIEND LOL 123");
                 // })
                 .catch(err => res.status(500).json(err));
-                console.log("HERE WE ARE MY GOOD FRIEND LOL 123");
+
         });
 
     router.get('/', homeController.getHome);
@@ -60,6 +52,7 @@ module.exports = () => {
                     err.password = "false password"
                     if(!app) return res.status(400).json(err);
                 })
+                return res.render("Hey " + username + " you are in! right on!");
             }else{
                 return res.status(400).json(errors);
             }
@@ -92,6 +85,7 @@ module.exports = () => {
                     return res.json(newUser);
                 });
               });
+              return res.render("Hey " + username + " you are registered! right on!");
         }    )
 
     });
