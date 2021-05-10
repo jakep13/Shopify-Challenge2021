@@ -72,6 +72,8 @@ module.exports = () => {
 
     router.post('/signup', (req,res)=> {
         //add here to validate input
+        const username = req.body.username
+        const password = req.body.password
         User.findOne( {  username  }  ).then( usr => {
             if(usr){
                 errors.username = "Username is already in use";
